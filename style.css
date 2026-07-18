@@ -1,0 +1,165 @@
+/* ==========================================
+   Brand Colors & Base Setup
+   ========================================== */
+:root {
+    --primary-blue: #0044cc;
+    --accent-gold: #ffcc00;
+    --dark-gray: #222222;
+    --light-bg: #f9f9f9;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--dark-gray);
+    line-height: 1.6;
+    background-color: #ffffff;
+}
+
+/* ==========================================
+   Header / Navigation
+   ========================================== */
+header {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    border-bottom: 4px solid var(--accent-gold);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   Hero Showcase Section
+   ========================================== */
+.hero {
+    background: linear-gradient(rgba(0, 68, 204, 0.15), rgba(0, 0, 0, 0.45)), url('school-campus.jpg') no-repeat center center/cover;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.logo-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 160px;
+    box-sizing: border-box;
+    border: 3px solid var(--primary-blue);
+}
+
+.logo-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* ==========================================
+   School Motto Callout Banner
+   ========================================== */
+.motto-banner {
+    background-color: var(--accent-gold);
+    color: var(--dark-gray);
+    text-align: center;
+    padding: 1.2rem 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-bottom: 2px solid #e6b800;
+}
+
+/* ==========================================
+   Main Content & Responsive Layout Grid
+   ========================================== */
+.container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.card {
+    background-color: var(--light-bg);
+    border-top: 5px solid var(--primary-blue);
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.card p {
+    font-size: 1.05rem;
+    color: #555;
+}
+
+/* ==========================================
+   Footer & Studio Credits
+   ========================================== */
+footer {
+    background-color: var(--dark-gray);
+    color: #aaaaaa;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: 4rem;
+    border-top: 4px solid var(--primary-blue);
+}
+
+footer .footer-motto {
+    color: #ffffff;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.powered-by {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #777777;
+}
+
+.powered-by strong {
+    color: var(--accent-gold);
+}
