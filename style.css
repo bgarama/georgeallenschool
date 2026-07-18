@@ -38,7 +38,7 @@ header h1 {
    Hero Showcase Section
    ========================================== */
 .hero {
-    background: linear-gradient(rgba(0, 68, 204, 0.15), rgba(0, 0, 0, 0.45)), url('george-allen-logo.jpeg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 68, 204, 0.15), rgba(0, 0, 0, 0.45)), url("assets/images/george-allen-logo.jpeg") no-repeat center center/cover;
     height: 450px;
     display: flex;
     flex-direction: column;
