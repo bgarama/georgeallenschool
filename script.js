@@ -14,7 +14,9 @@
         // Simple client-side routing system
         const routes = {
             home: 'home.html',
-            gallery: 'gallery.html'
+            about: 'about.html',
+            gallery: 'gallery.html',
+            contact: 'contact.html'
         };
 
         async function loadPage(pageName) {
