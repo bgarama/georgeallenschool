@@ -1,194 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Gallery | George Allen School</title>
-    <!-- Links the same custom style sheet to keep colors consistent -->
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Extra styles tailored specifically for the Gallery layout */
-        .gallery-header {
-            background: linear-gradient(rgba(10, 82, 198, 0.9), rgba(10, 82, 198, 0.8)), url('assets/images/partner-placeholder.png') no-repeat center center/cover;
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 2rem;
-        }
-
-        .gallery-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .gallery-header p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--light-bg-grey);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            border: 4px solid var(--white);
-            background: var(--white);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        /* Hover Effect reminiscent of the gold school accent color */
-        .gallery-item:hover {
-            transform: scale(1.02);
-            border-color: var(--accent-gold);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-        }
-
-        .gallery-item:hover img {
-            filter: brightness(0.9);
-        }
-
-        .image-caption {
-            padding: 1rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--dark-text);
-            text-align: center;
-            background: var(--white);
-            border-top: 1px solid var(--light-bg-grey);
-        }
-
-        /* Simple Pure CSS Lightbox Feature (Click to view full image) */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox:target {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 80%;
-            border: 5px solid var(--white);
-            border-radius: var(--border-radius);
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: var(--white);
-            font-size: 3rem;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- 1. HEADER & NAVIGATION -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">George Allen School</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">Who We Are</a></li>
-                <li><a href="#gallery" style="border-bottom: 2px solid var(--accent-gold);">Gallery</a></li>
-                <li><a href="index.html#contact">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- 2. GALLERY HERO INTRO -->
-    <div class="gallery-header">
-        <h1>School Life Gallery</h1>
-        <p>A glimpse into our classrooms, daily community growth, and active learning spaces in Silala.</p>
-    </div>
-
-    <!-- 3. MAIN GALLERY GRID SECTION -->
-    <main id="gallery" class="container">
+<section class="page-section gallery-section">
+    <div class="container">
+        <h2>School & Community Gallery</h2>
+        <hr class="accent-line">
+        <p class="section-intro">A visual journey through our academic terms, community initiatives, and environmental milestones.</p>
+        
         <div class="gallery-grid">
-            
-            <!-- Image 1: Classrooms -->
-            <a href="#img1" class="gallery-item">
-                <img src="assets/images/classroom-session.jpg" alt="Active learning session at George Allen School">
-                <div class="image-caption">Interactive Classroom Lessons</div>
-            </a>
+            <!-- Image Item 1 -->
+            <div class="gallery-item">
+                <div class="gallery-image-placeholder">[ Campus Architecture & Learning Blocks ]</div>
+                <div class="gallery-caption">
+                    <h4>Main Academic Block</h4>
+                    <p>Where foundational learning meets opportunity every day.</p>
+                </div>
+            </div>
 
-            <!-- Image 2: Campus & Students -->
-            <a href="#img2" class="gallery-item">
-                <img src="assets/images/school-campus.jpg" alt="Students in uniform outside the blue school building">
-                <div class="image-caption">Our Vibrant Campus & Students</div>
-            </a>
+            <!-- Image Item 2 -->
+            <div class="gallery-item">
+                <div class="gallery-image-placeholder">[ Community Action & Environmental Days ]</div>
+                <div class="gallery-caption">
+                    <h4>Community Sanitation Drives</h4>
+                    <p>Students and local organizers uniting for regional environment campaigns.</p>
+                </div>
+            </div>
 
-            <!-- Image 3: Core Story / Build Process Placeholders -->
-            <a href="#img3" class="gallery-item">
-                <img src="assets/images/community-building.jpg" alt="Community project and playground activities">
-                <div class="image-caption">Community & Collaboration</div>
-            </a>
-
-            <!-- Image 4: Future additions placeholder -->
-            <a href="#img4" class="gallery-item">
-                <img src="assets/images/student-activities.jpg" alt="Creative activities and group learning">
-                <div class="image-caption">Empowering Bright Futures</div>
-            </a>
-
+            <!-- Image Item 3 -->
+            <div class="gallery-item">
+                <div class="gallery-image-placeholder">[ Sports, Arts & Cultural Festivals ]</div>
+                <div class="gallery-caption">
+                    <h4>Extra-Curricular Development</h4>
+                    <p>Celebrating student talents, traditional percussion, and creative expressions.</p>
+                </div>
+            </div>
         </div>
-    </main>
-
-    <!-- 4. LIGHTBOX MODAL TARGETS (Pure CSS popups, no JavaScript needed!) -->
-    <div id="img1" class="lightbox">
-        <a href="#gallery" class="close-lightbox">&times;</a>
-        <img src="assets/images/classroom-session.jpg" alt="Active learning session at George Allen School">
     </div>
-
-    <div id="img2" class="lightbox">
-        <a href="#gallery" class="close-lightbox">&times;</a>
-        <img src="assets/images/school-campus.jpg" alt="Students in uniform outside the blue school building">
-    </div>
-
-    <div id="img3" class="lightbox">
-        <a href="#gallery" class="close-lightbox">&times;</a>
-        <img src="assets/images/community-building.jpg" alt="Community project and playground activities">
-    </div>
-
-    <div id="img4" class="lightbox">
-        <a href="#gallery" class="close-lightbox">&times;</a>
-        <img src="assets/images/student-activities.jpg" alt="Creative activities and group learning">
-    </div>
-
-    <!-- 5. FOOTER SECTION -->
-    <footer>
-        <div class="footer-motto">George Allen School &mdash; "The Sky Is The Limit"</div>
-        <p>&copy; 2026 George Allen School. All rights reserved.</p>
-        <p>Silala, Ganze, Kilifi County, Kenya</p>
-        <p class="powered-by">Powered by <strong>Baha Digital Innovation Hub</strong></p>
-    </footer>
-
-</body>
-</html>
+</section>
