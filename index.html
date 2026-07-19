@@ -3,32 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George Allen School | Official Site work in progress</title>
+    <title>George Allen School | Official Site</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="description" content="George Allen School in Silala provides quality foundational education and empowers the local community.">
 </head>
 <body>
 
-    <!-- GLOBAL HEADER & NAVIGATION -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">George Allen School</div>
-            <ul class="nav-links">
-                <li><a href="#home.html" class="nav-btn active" data-page="home">Home</a></li>
-                <li><a href="#about.html" class="nav-btn" data-page="about">Who We Are</a></li>
-                 <li><a href="#gallery.html" class="nav-btn" data-page="gallery">Gallery</a></li>
-                 <li><a href="#Contact.html" class="nav-btn" data-page="contact">Contact Us</a></li>
-            </ul>
+    <!-- MASTER HEADER & NAVIGATION MENU -->
+    <header class="site-header">
+        <div class="logo">
+            <span>George Allen School</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="#home" class="nav-btn active" data-page="home">Home</a>
+            <a href="#about" class="nav-btn" data-page="about">Who We Are</a>
+            <a href="#gallery" class="nav-btn" data-page="gallery">Gallery</a>
+            <a href="#partners" class="nav-btn" data-page="partners">Our Partners</a>
+            <a href="#contact" class="nav-btn" data-page="contact">Contact Us</a>
         </nav>
     </header>
 
+    <!-- MAIN APP CONTAINER (Dynamic pages inject inside here) -->
     <div id="content-app"></div>
 
-    <!-- GLOBAL FOOTER SECTION -->
-    <footer>
-        <div class="footer-motto">George Allen School &mdash; "The Sky Is The Limit"</div>
-        <p>&copy; 2026 George Allen School. All rights reserved.</p>
+    <!-- MASTER FOOTER -->
+    <footer class="site-footer">
+        <h3>George Allen School</h3>
+        <p>Foundational Education & Community Empowerment</p>
         <p>Silala, Ganze, Kilifi County, Kenya</p>
-        <p class="powered-by">Powered by <strong>Baha Digital Innovation Hub</strong></p>
+        <p>Email: info@georgeallenschool.com</p>
+        <div class="footer-motto">
+            "The Sky Is The Limit"
+        </div>
+        <div class="footer-content">
+            <p class="site-credits">
+                Powered by <span id="site-designer">Baha Digital Innovation Hub</span>
+            </p>
+        </div>
+        <p class="copyright-text">&copy; 2026 George Allen School. All rights reserved.</p>
     </footer>
+
+    <!-- CENTRAL CONTROL INTERACTIVITY SCRIPT -->
+    <script src="script.js"></script>
 </body>
 </html>
