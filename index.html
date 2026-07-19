@@ -4,113 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>George Allen School | Official Site</title>
-    <!-- Links your external style sheet from the same folder -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. HEADER & NAVIGATION -->
+    <!-- GLOBAL HEADER & NAVIGATION -->
     <header>
         <nav class="navbar">
             <div class="logo">George Allen School</div>
             <ul class="nav-links">
-                <li><a href="#about">Who We Are</a></li>
-                <li><a href="#partners">Our Partners</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#home" class="nav-btn active" data-page="home">Home</a></li>
+                <li><a href="#gallery" class="nav-btn" data-page="gallery">Gallery</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- 2. HERO / LOGO BANNER SECTION -->
-    <section class="hero">
-        <div class="logo-container">
-            <img src="assets/images/george-allen-logo.jpeg" alt="George Allen School Logo">
-        </div>
-    </section>
+    <!-- DYNAMIC ROUTER CONTAINER (Pages load inside here) -->
+    <div id="content-app"></div>
 
-    <!-- 3. MOTTO BANNER SECTION -->
-    <div class="motto-banner">
-        "The Sky Is The Limit"
-    </div>
-
-    <!-- 4. MAIN CONTENT AREA -->
-    <main>
-        
-        <!-- Info Cards Grid (Core Strengths) -->
-        <section class="container info-cards-section">
-            <div class="grid">
-                <div class="card">
-                    <h3>Our Fascinating Story</h3>
-                    <p>Born from a profound personal vision in the heart of Silala, George Allen School was built entirely from the ground up. Driven by a dedicated effort to uplift the region, our founder painstakingly gathered materials and cleared the land piece by piece to breathe life into this dream.</p>
-                </div>
-                <div class="card">
-                    <h3>Community Empowerment</h3>
-                    <p>As a grassroots private initiative, we do more than just educate—we actively build society. By prioritizing the employment of local residents and working directly alongside neighborhood families, our presence actively fuels the local economy and provides sustainable livelihoods.</p>
-                </div>
-                <div class="card">
-                    <h3>Bridging the Future</h3>
-                    <p>We firmly believe that high-quality foundational schooling shouldn't be out of reach. Through modest, accessible contributions from families, we successfully keep our doors open while ensuring that local children receive the transformative educational foundation they deserve.</p>
-                </div>
-            </div>
-        </section>
-        
-        <hr class="section-divider">
-
-        <!-- WHO WE ARE SECTION -->
-        <section id="about" class="section-container">
-            <h2>Who We Are</h2>
-            <p class="motto"><em>"The Sky is the Limit"</em></p>
-            
-            <div class="about-content">
-                <h3>Our Story & Mission</h3>
-                <p>
-                    Founded by Mr Mtawali Mukutano Zia, George Allen School was built from the ground up in Silala to serve and uplift the local community. Driven by a deep personal journey to address the educational needs of the area, the school was established step-by-step, transforming a local plot with gathered materials into a beacon of opportunity.
-                </p>
-                <p>
-                    While operating as a dedicated private initiative, we thrive on the vital contributions and collaboration of our parents. Together, we do more than educate—we actively create local employment opportunities that directly benefit and strengthen our entire neighborhood.
-                </p>
-            </div>
-        </section>
-
-        <!-- OUR PARTNERS SECTION -->
-        <section id="partners" class="section-container gray-bg">
-            <h2>Our Partners</h2>
-            <p>We believe in collaborative growth. George Allen School works closely with local community stakeholders, organizations, and families to ensure our students have everything they need to succeed.</p>
-            <div class="partners-grid">
-                <div class="partner-card">
-                    <img src="assets/images/partner-placeholder.png" alt="Community Partner">
-                    <p>Local Community Stakeholders</p>
-                </div>
-                <div class="partner-card">
-                    <img src="assets/images/partner-placeholder.png" alt="Parent Association">
-                    <p>George Allen Parents Association</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT US SECTION -->
-        <section id="contact" class="section-container">
-            <h2>Contact Us</h2>
-            <p>Have questions or want to visit us in Silala? Get in touch!</p>
-            
-            <div class="contact-details">
-                <p><strong>📍 Location:</strong> Silala, Aston Villa Community Center Area</p>
-                <p><strong>📧 Email:</strong> info@georgeallenschool.com</p>
-                <p><strong>📞 Phone:</strong> +254117194836</p>
-            </div>
-
-            <!-- Simple Contact Form -->
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-
-    </main>
-
-    <!-- 5. FOOTER SECTION -->
+    <!-- GLOBAL FOOTER SECTION -->
     <footer>
         <div class="footer-motto">George Allen School &mdash; "The Sky Is The Limit"</div>
         <p>&copy; 2026 George Allen School. All rights reserved.</p>
@@ -118,5 +30,63 @@
         <p class="powered-by">Powered by <strong>Baha Digital Innovation Hub</strong></p>
     </footer>
 
+    <!-- INTERACTIVITY CONTROL JAVASCRIPT -->
+    <script>
+        // Simple client-side routing system
+        const routes = {
+            home: 'home.html',
+            gallery: 'gallery.html'
+        };
+
+        async function loadPage(pageName) {
+            const container = document.getElementById('content-app');
+            const targetUrl = routes[pageName] || routes.home;
+
+            try {
+                const response = await fetch(targetUrl);
+                if (!response.ok) throw new Error('Page not found');
+                
+                const htmlContent = await response.text();
+                container.innerHTML = htmlContent;
+
+                // Update active class visibility on the navigation items
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    if (link.getAttribute('data-page') === pageName) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Scroll back to top on page switch
+                window.scrollTo(0, 0);
+
+            } catch (error) {
+                container.innerHTML = `<div class="container"><p style="text-align:center; padding: 4rem 0; color: red;">Error loading page content. Please try again later.</p></div>`;
+                console.error(error);
+            }
+        }
+
+        // Event listener for click actions on navigation links
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = button.getAttribute('data-page');
+                window.location.hash = targetPage;
+                loadPage(targetPage);
+            });
+        });
+
+        // Track and load appropriate view based on URL hashes
+        window.addEventListener('DOMContentLoaded', () => {
+            const initialHash = window.location.hash.replace('#', '') || 'home';
+            loadPage(initialHash);
+        });
+
+        window.addEventListener('hashchange', () => {
+            const updateHash = window.location.hash.replace('#', '') || 'home';
+            loadPage(updateHash);
+        });
+    </script>
 </body>
 </html>
