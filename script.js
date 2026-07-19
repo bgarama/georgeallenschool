@@ -1,71 +1,111 @@
- <!-- DYNAMIC ROUTER CONTAINER (Pages load inside here) -->
-    <div id="content-app"></div>
+/**
+ * George Allen School - Central Website Controller
+ * Handles SPA Routing, Dynamic Content Loading, and Active State Management
+ */
 
-    <!-- GLOBAL FOOTER SECTION -->
-    <footer>
-        <div class="footer-motto">George Allen School &mdash; "The Sky Is The Limit"</div>
-        <p>&copy; 2026 George Allen School. All rights reserved.</p>
-        <p>Silala, Ganze, Kilifi County, Kenya</p>
-        <p class="powered-by">Powered by <strong>Baha Digital Innovation Hub</strong></p>
-    </footer>
+const contentApp = document.getElementById('content-app');
+const navButtons = document.querySelectorAll('.nav-btn');
 
-    <!-- INTERACTIVITY CONTROL JAVASCRIPT -->
-    <script>
-        // Simple client-side routing system
-        const routes = {
-            home: 'home.html',
-            about: 'about.html',
-            gallery: 'gallery.html',
-            contact: 'contact.html'
-        };
+// Object mapping route hashes to their respective local file paths
+const routes = {
+    'home': 'pages/home.html',
+    'about': 'pages/about.html',
+    'gallery': 'pages/gallery.html',
+    'partners': 'pages/partners.html',
+    'contact': 'pages/contact.html'
+};
 
-        async function loadPage(pageName) {
-            const container = document.getElementById('content-app');
-            const targetUrl = routes[pageName] || routes.home;
+/**
+ * Updates the visual active state on the navigation bar
+ * @param {string} pageId - The current active page identifier
+ */
+function updateNavbarActiveState(pageId) {
+    navButtons.forEach(btn => {
+        if (btn.getAttribute('data-page') === pageId) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
 
-            try {
-                const response = await fetch(targetUrl);
-                if (!response.ok) throw new Error('Page not found');
-                
-                const htmlContent = await response.text();
-                container.innerHTML = htmlContent;
+/**
+ * Fetches and injects page content dynamically based on the current route
+ * @param {string} pageId - The targeted page to load
+ */
+async function loadPage(pageId) {
+    // Default fallback to home if pageId doesn't exist in our route register
+    const targetPage = routes[pageId] ? pageId : 'home';
+    const filePath = routes[targetPage];
 
-                // Update active class visibility on the navigation items
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    if (link.getAttribute('data-page') === pageName) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
+    updateNavbarActiveState(targetPage);
 
-                // Scroll back to top on page switch
-                window.scrollTo(0, 0);
+    try {
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            throw new Error(`Failed to load: ${response.statusText}`);
+        }
+        const htmlContent = await response.text();
+        contentApp.innerHTML = htmlContent;
 
-            } catch (error) {
-                container.innerHTML = `<div class="container"><p style="text-align:center; padding: 4rem 0; color: red;">Error loading page content. Please try again later.</p></div>`;
-                console.error(error);
-            }
+        // Automatically scroll to the top of the viewport when content changes
+        window.scrollTo(0, 0);
+
+        // Optional hook: If we just loaded the contact page, initialize form bindings
+        if (targetPage === 'contact') {
+            initializeContactForm();
         }
 
-        // Event listener for click actions on navigation links
-        document.querySelectorAll('.nav-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetPage = button.getAttribute('data-page');
-                window.location.hash = targetPage;
-                loadPage(targetPage);
-            });
-        });
+    } catch (error) {
+        console.error("Routing error:", error);
+        contentApp.innerHTML = `
+            <div class="error-container" style="text-align: center; padding: 50px 20px;">
+                <h2>Oops! Page Content Unreachable</h2>
+                <p>We are having trouble displaying this section right now. Please try again or refresh the page.</p>
+            </div>
+        `;
+    }
+}
 
-        // Track and load appropriate view based on URL hashes
-        window.addEventListener('DOMContentLoaded', () => {
-            const initialHash = window.location.hash.replace('#', '') || 'home';
-            loadPage(initialHash);
-        });
+/**
+ * Evaluates the window hash to match browser navigation changes
+ */
+function handleRouting() {
+    // Get hash, remove the '#' symbol, and default to empty string if missing
+    let pageId = window.location.hash.substring(1);
+    
+    if (!pageId) {
+        pageId = 'home';
+    }
+    
+    loadPage(pageId);
+}
 
-        window.addEventListener('hashchange', () => {
-            const updateHash = window.location.hash.replace('#', '') || 'home';
-            loadPage(updateHash);
+/**
+ * Setup placeholder for any interactive elements inside loaded pages
+ * (e.g., handling contact form animations or extra listeners after injection)
+ */
+function initializeContactForm() {
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        console.log("Contact form actions hooked up successfully.");
+    }
+}
+
+// --- EVENT LISTENERS ---
+
+// Trigger router evaluation whenever the window URL hash alters
+window.addEventListener('hashchange', handleRouting);
+
+// Trigger initial route parsing on page refresh/load
+document.addEventListener('DOMContentLoaded', () => {
+    handleRouting();
+    
+    // Explicit click listener for navigation buttons to guarantee smoothness
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const pageTarget = btn.getAttribute('data-page');
+            window.location.hash = pageTarget;
         });
-    </script>
+    });
+});
