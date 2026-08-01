@@ -535,3 +535,10 @@ img {
         transition: none !important;
     }
 }
+
+.hero-support-text {
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.92);
+}
