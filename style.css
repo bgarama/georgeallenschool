@@ -164,7 +164,7 @@ img {
 /* --- Home / Hero Page Styles --- */
 .home-hero {
     background:
-        linear-gradient(rgba(11, 60, 149, 0.88), rgba(11, 60, 149, 0.82)),
+        linear-gradient(rgba(11, 60, 149, 0.90), rgba(11, 60, 149, 0.82)),
         url('assets/images/george-allen-logo.jpeg') no-repeat center center / cover;
     background-color: var(--primary-blue);
     min-height: 450px;
@@ -180,12 +180,21 @@ img {
     font-size: 3rem;
     margin-bottom: 15px;
     letter-spacing: 0.5px;
+    .hero-tagline
 }
 
 .hero-tagline {
     font-size: 1.4rem;
     color: var(--light-grey);
     margin-bottom: 25px;
+}
+.hero-support-text {
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+    font-size: 1.05rem;
+    line-height:1.7;
+    color:
+    color: rgba(255, 255, 255, 0.92);
 }
 
 .motto-badge {
@@ -536,9 +545,3 @@ img {
     }
 }
 
-.hero-support-text {
-    max-width: 700px;
-    margin: 0 auto 25px auto;
-    font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.92);
-}
