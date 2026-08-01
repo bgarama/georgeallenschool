@@ -1,65 +1,105 @@
 /**
  * George Allen School - Central Website Controller
- * Handles SPA Routing, Dynamic Content Loading, and Active State Management
+ * Handles SPA routing, dynamic content loading, and active state management
  */
 
 const contentApp = document.getElementById('content-app');
 const navButtons = document.querySelectorAll('.nav-btn');
 
-// Object mapping route hashes to their respective local file paths
 const routes = {
-    'home': 'pages/home.html',
-    'about': 'pages/about.html',
-    'gallery': 'pages/gallery.html',
-    'partners': 'pages/partners.html',
-    'contact': 'pages/contact.html'
+    home: 'pages/home.html',
+    about: 'pages/about.html',
+    gallery: 'pages/gallery.html',
+    partners: 'pages/partners.html',
+    contact: 'pages/contact.html'
 };
+
+let currentRequestId = 0;
 
 /**
  * Updates the visual active state on the navigation bar
- * @param {string} pageId - The current active page identifier
+ * @param {string} pageId
  */
 function updateNavbarActiveState(pageId) {
-    navButtons.forEach(btn => {
-        if (btn.getAttribute('data-page') === pageId) {
-            btn.classList.add('active');
+    navButtons.forEach((btn) => {
+        const isActive = btn.dataset.page === pageId;
+        btn.classList.toggle('active', isActive);
+
+        if (isActive) {
+            btn.setAttribute('aria-current', 'page');
         } else {
-            btn.classList.remove('active');
+            btn.removeAttribute('aria-current');
         }
     });
 }
 
 /**
- * Fetches and injects page content dynamically based on the current route
- * @param {string} pageId - The targeted page to load
+ * Initializes contact form behavior after the contact page is injected
+ */
+function initializeContactForm() {
+    const contactForm = document.querySelector('.contact-form');
+
+    if (!contactForm) return;
+
+    console.log('Contact form initialized.');
+
+    contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        alert('Thank you for reaching out. Form submission setup will be connected next.');
+    });
+}
+
+/**
+ * Loads page content dynamically based on the route
+ * @param {string} pageId
  */
 async function loadPage(pageId) {
-    // Default fallback to home if pageId doesn't exist in our route register
+    if (!contentApp) {
+        console.error('Missing #content-app container in the DOM.');
+        return;
+    }
+
     const targetPage = routes[pageId] ? pageId : 'home';
     const filePath = routes[targetPage];
+    const requestId = ++currentRequestId;
 
     updateNavbarActiveState(targetPage);
 
+    contentApp.innerHTML = `
+        <div class="loading-state">
+            <p>Loading content...</p>
+        </div>
+    `;
+
     try {
         const response = await fetch(filePath);
+
         if (!response.ok) {
-            throw new Error(`Failed to load: ${response.statusText}`);
+            throw new Error(`Failed to load ${filePath}: ${response.status} ${response.statusText}`);
         }
+
         const htmlContent = await response.text();
+
+        // Prevent outdated requests from overwriting the latest content
+        if (requestId !== currentRequestId) return;
+
         contentApp.innerHTML = htmlContent;
 
-        // Automatically scroll to the top of the viewport when content changes
-        window.scrollTo(0, 0);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
 
-        // Optional hook: If we just loaded the contact page, initialize form bindings
         if (targetPage === 'contact') {
             initializeContactForm();
         }
-
     } catch (error) {
-        console.error("Routing error:", error);
+        console.error('Routing error:', error);
+
+        if (requestId !== currentRequestId) return;
+
         contentApp.innerHTML = `
-            <div class="error-container" style="text-align: center; padding: 50px 20px;">
+            <div class="error-container">
                 <h2>Oops! Page Content Unreachable</h2>
                 <p>We are having trouble displaying this section right now. Please try again or refresh the page.</p>
             </div>
@@ -68,44 +108,16 @@ async function loadPage(pageId) {
 }
 
 /**
- * Evaluates the window hash to match browser navigation changes
+ * Resolves the current hash and loads the matching page
  */
 function handleRouting() {
-    // Get hash, remove the '#' symbol, and default to empty string if missing
-    let pageId = window.location.hash.substring(1);
-    
-    if (!pageId) {
-        pageId = 'home';
-    }
-    
+    const pageId = window.location.hash.replace('#', '') || 'home';
     loadPage(pageId);
 }
 
-/**
- * Setup placeholder for any interactive elements inside loaded pages
- * (e.g., handling contact form animations or extra listeners after injection)
- */
-function initializeContactForm() {
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        console.log("Contact form actions hooked up successfully.");
-    }
-}
-
-// --- EVENT LISTENERS ---
-
-// Trigger router evaluation whenever the window URL hash alters
+/* --- Event Listeners --- */
 window.addEventListener('hashchange', handleRouting);
 
-// Trigger initial route parsing on page refresh/load
 document.addEventListener('DOMContentLoaded', () => {
     handleRouting();
-    
-    // Explicit click listener for navigation buttons to guarantee smoothness
-    navButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const pageTarget = btn.getAttribute('data-page');
-            window.location.hash = pageTarget;
-        });
-    });
 });
