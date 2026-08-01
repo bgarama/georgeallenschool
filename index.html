@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George Allen School | Official Site WORK IN PROGRESS!!</title>
-    <link rel="stylesheet" href="style.css">
+    <title>George Allen School | Official Site</title>
     <meta name="description" content="George Allen School in Silala provides quality foundational education and empowers the local community.">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- MASTER HEADER & NAVIGATION MENU -->
+    <!-- HEADER & NAVIGATION -->
     <header class="site-header">
         <div class="logo">
-            <span>George Allen School</span>
+            <a href="#home">George Allen School</a>
         </div>
-        <nav class="nav-menu">
+
+        <nav class="nav-menu" aria-label="Main navigation">
             <a href="#home" class="nav-btn" data-page="home">Home</a>
             <a href="#about" class="nav-btn" data-page="about">Who We Are</a>
             <a href="#gallery" class="nav-btn" data-page="gallery">Gallery</a>
@@ -23,31 +24,40 @@
         </nav>
     </header>
 
-    <!-- MAIN APP CONTAINER (Dynamic pages inject inside here) -->
-    <div id="content-app"></div>
+    <!-- MAIN CONTENT AREA -->
+    <main id="content-app">
+        <noscript>Please enable JavaScript to view the full website content.</noscript>
+    </main>
 
-    <!-- MASTER FOOTER -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <h3>George Allen School</h3>
         <p>Foundational Education & Community Empowerment</p>
         <p>Silala, Ganze, Kilifi County, Kenya</p>
-        <p>Email: georgeallenschoolsilala@gmail.com</p>
+        <p>
+            Email:
+            <a href="mailto:georgeallenschoolsilala@gmail.com">
+                georgeallenschoolsilala@gmail.com
+            </a>
+        </p>
+
         <div class="footer-motto">
             "The Sky Is The Limit"
         </div>
+
         <div class="footer-content">
-            <p class="site-credits">
-                Powered by <span id="site-designer">Baha Digital Innovation Hub</span>
-            </p>
+            <p class="copyright-text">&copy; 2026 George Allen School. All rights reserved.</p>
         </div>
-        <p class="copyright-text">&copy; 2026 George Allen School. All rights reserved.</p>
+
+        <p class="site-credits">
+            Powered by
+            <a href="pages/baha-digital-innovation-hub.html" id="site-designer">
+                Baha Digital Innovation Hub
+            </a>
+        </p>
     </footer>
 
-    <!-- CENTRAL CONTROL INTERACTIVITY SCRIPT -->
+    <!-- SCRIPT -->
     <script src="script.js"></script>
-    
-    <p class="site-credits">
-  Powered by <a href="pages/baha-digital-innovation-hub.html" id="site-designer">Baha Digital Innovation Hub</a>
-</p>
 </body>
 </html>
