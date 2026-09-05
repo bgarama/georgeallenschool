@@ -672,3 +672,57 @@ textarea {
         transition: none !important;
     }
 }
+
+.hero-eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--light-grey);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+}
+
+.hero-btn-primary {
+    background-color: var(--accent-gold);
+    color: var(--primary-blue);
+}
+
+.hero-btn-primary:hover {
+    background-color: var(--accent-gold-hover);
+}
+
+.hero-btn-secondary {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-btn:focus-visible {
+    outline: 3px solid var(--accent-gold);
+    outline-offset: 3px;
+}
