@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,64 +50,83 @@
   }
   </script>
 </head>
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
 
-    <!-- HEADER & NAVIGATION -->
-    <header class="site-header">
-        <div class="logo">
-            <a href="#home">George Allen School</a>
-        </div>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="logo">
+        <a href="#home">George Allen School</a>
+      </div>
 
-        <nav class="nav-menu" aria-label="Main navigation">
-            <a href="#home" class="nav-btn" data-page="home">Home</a>
-            <a href="#about" class="nav-btn" data-page="about">Who We Are</a>
-            <a href="#gallery" class="nav-btn" data-page="gallery">Gallery</a>
-            <a href="#partners" class="nav-btn" data-page="partners">Our Partners</a>
-            <a href="#contact" class="nav-btn" data-page="contact">Contact Us</a>
-        </nav>
-    </header>
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <!-- MAIN CONTENT AREA -->
-    <main id="content-app">
-        <noscript>Please enable JavaScript to view the full website content.</noscript>
-    </main>
+      <nav
+        class="nav-menu"
+        id="primary-navigation"
+        aria-label="Main navigation"
+      >
+        <a href="#home" class="nav-btn active" data-page="home">Home</a>
+        <a href="#about" class="nav-btn" data-page="about">Who We Are</a>
+        <a href="#gallery" class="nav-btn" data-page="gallery">Gallery</a>
+        <a href="#partners" class="nav-btn" data-page="partners">Our Partners</a>
+        <a href="#contact" class="nav-btn" data-page="contact">Contact Us</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <h3>George Allen School</h3>
-        <p>Foundational Education & Community Empowerment</p>
-        <p>Silala, Ganze, Kilifi County, Kenya</p>
-        <p>
-            Email:
-            <a href="mailto:georgeallenschoolsilala@gmail.com">
-                georgeallenschoolsilala@gmail.com
-            </a>
-        </p>
+  <!-- MAIN CONTENT -->
+  <main id="content-app">
+    <noscript>Please enable JavaScript to view the full website content.</noscript>
+  </main>
 
-        <div class="footer-motto">
-            "The Sky Is The Limit"
-        </div>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <h3>George Allen School</h3>
+    <p>Foundational Education & Community Empowerment</p>
+    <p>Silala, Ganze, Kilifi County, Kenya</p>
 
-        <div class="footer-content">
-            <p class="copyright-text">&copy; 2026 George Allen School. All rights reserved.</p>
-        </div>
+    <p>
+      Email:
+      <a href="mailto:georgeallenschoolsilala@gmail.com">
+        georgeallenschoolsilala@gmail.com
+      </a>
+    </p>
 
-        <p class="site-credits">
-    Powered by
-    <a
+    <div class="footer-motto">
+      "The Sky Is The Limit"
+    </div>
+
+    <div class="footer-content">
+      <p class="copyright-text">
+        &copy; 2026 George Allen School. All rights reserved.
+      </p>
+    </div>
+
+    <p class="site-credits">
+      Powered by
+      <a
         id="site-designer"
         href="https://bahamadzogadze.com"
         target="_blank"
-        rel="noopener noreferrer">
+        rel="noopener noreferrer"
+      >
         BAHA Digital Innovation Hub
-    </a>
-</p>
+      </a>
+    </p>
+  </footer>
 
-    </footer>
-
-    <!-- SCRIPT -->
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
