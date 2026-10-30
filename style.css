@@ -796,3 +796,25 @@ textarea {
         font-size: 0.95rem;
     }
 }
+
+.payment-details-box {
+    margin-top: 15px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-left: 4px solid var(--primary-blue);
+    border-radius: var(--border-radius-sm);
+}
+
+.payment-details-box h4 {
+    color: var(--primary-blue);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.payment-details-box h4:first-child {
+    margin-top: 0;
+}
+
+.payment-details-box p {
+    margin-bottom: 10px;
+}
