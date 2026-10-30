@@ -728,188 +728,69 @@ textarea {
 }
 
 /* ==========================================================================
-   Fee Structure & Donations Pages
-   Fixed to George Allen School brand colours
+   Fee Structure Page
    ========================================================================== */
 
-.subpage-main {
-    flex: 1;
-}
-
-.subpage-hero {
-    background:
-        linear-gradient(rgba(11, 60, 149, 0.94), rgba(8, 45, 114, 0.92));
-    color: var(--white);
-    padding: 60px 20px;
-    text-align: center;
-    border-bottom: 4px solid var(--accent-gold);
-}
-
-.subpage-hero h1 {
-    font-size: 2.4rem;
-    margin-bottom: 12px;
-    color: var(--white);
-    line-height: 1.2;
-}
-
-.subpage-hero p {
-    max-width: 720px;
-    margin: 0 auto;
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 1.05rem;
-}
-
-.subpage-section {
-    padding: 60px 0;
-}
-
-.subpage-card {
-    background: var(--white);
-    padding: 30px;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--box-shadow-subtle);
-    margin-bottom: 30px;
-    border-top: 4px solid var(--primary-blue);
-}
-
-.subpage-card h2 {
+.fee-structure-section .about-content h3 {
     color: var(--primary-blue);
-    margin-bottom: 18px;
-    font-size: 1.45rem;
-    line-height: 1.3;
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
-.subpage-card p {
-    color: #4b525d;
-    margin-bottom: 14px;
+.fee-structure-section .about-content h3:first-child {
+    margin-top: 0;
 }
 
-.subpage-table-wrap {
-    overflow-x: auto;
-    margin-top: 10px;
-    border-radius: var(--border-radius-sm);
-}
-
-.subpage-table {
+.fee-table-wrap {
     width: 100%;
+    overflow-x: auto;
+    margin: 15px 0 25px;
+}
+
+.fee-table {
+    width: 100%;
+    min-width: 700px;
     border-collapse: collapse;
     background: var(--white);
+    box-shadow: var(--box-shadow-subtle);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.subpage-table thead {
+.fee-table thead tr {
     background-color: var(--primary-blue);
-    color: var(--white);
 }
 
-.subpage-table th,
-.subpage-table td {
-    padding: 14px;
+.fee-table thead th {
+    color: var(--white);
+    font-weight: 700;
+}
+
+.fee-table th,
+.fee-table td {
+    padding: 14px 16px;
     border: 1px solid #d9dee5;
     text-align: left;
     vertical-align: top;
 }
 
-.subpage-table th {
-    font-weight: 700;
-}
-
-.subpage-table tbody tr:nth-child(even) {
+.fee-table tbody tr:nth-child(even) {
     background-color: #f8fafc;
 }
 
-.subpage-table tbody tr:hover {
-    background-color: #eef3ff;
+.fee-table tbody tr:hover {
+    background-color: #eef4ff;
 }
 
-.subpage-list {
-    padding-left: 20px;
-    color: #4b525d;
-}
-
-.subpage-list li {
-    margin-bottom: 12px;
-}
-
-.subpage-highlight {
-    background-color: #fffaf0;
-    border-left: 5px solid var(--accent-gold);
-    border-top: none;
-}
-
-.subpage-note {
-    background-color: #f0f4fc;
-    border-left: 4px solid var(--primary-blue);
-    padding: 18px 20px;
-    border-radius: var(--border-radius-sm);
-    margin-top: 20px;
-}
-
-.subpage-back-link {
-    display: inline-block;
-    margin-top: 12px;
-    color: var(--primary-blue);
-    font-weight: 700;
-    text-decoration: none;
-    transition: var(--transition-smooth);
-}
-
-.subpage-back-link:hover {
-    color: var(--primary-blue-hover);
-    text-decoration: underline;
-}
-
-.subpage-button-link {
-    display: inline-block;
-    margin-top: 14px;
-    background-color: var(--accent-gold);
-    color: var(--primary-blue);
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 999px;
-    font-weight: 700;
-    transition: var(--transition-smooth);
-}
-
-.subpage-button-link:hover {
-    background-color: var(--accent-gold-hover);
-}
-
-.subpage-meta {
-    color: var(--neutral-grey);
-    font-size: 0.95rem;
-    margin-top: 6px;
-}
-
-.subpage-accent-text {
-    color: var(--accent-gold);
-    font-weight: 700;
-}
-
-/* Responsive for subpages */
 @media (max-width: 768px) {
-    .subpage-hero {
-        padding: 42px 20px;
+    .fee-table {
+        min-width: 600px;
     }
 
-    .subpage-hero h1 {
-        font-size: 1.9rem;
-    }
-
-    .subpage-hero p {
-        font-size: 1rem;
-    }
-
-    .subpage-card {
-        padding: 22px;
-    }
-
-    .subpage-card h2 {
-        font-size: 1.25rem;
-    }
-
-    .subpage-table th,
-    .subpage-table td {
-        padding: 10px;
+    .fee-table th,
+    .fee-table td {
+        padding: 10px 12px;
         font-size: 0.95rem;
     }
 }
+
