@@ -729,7 +729,7 @@ textarea {
 
 /* ==========================================================================
    Fee Structure & Donations Pages
-   Aligned with existing George Allen School theme
+   Fixed to George Allen School brand colours
    ========================================================================== */
 
 .subpage-main {
@@ -737,16 +737,19 @@ textarea {
 }
 
 .subpage-hero {
-    background: linear-gradient(rgba(11, 60, 149, 0.92), rgba(11, 60, 149, 0.86));
+    background:
+        linear-gradient(rgba(11, 60, 149, 0.94), rgba(8, 45, 114, 0.92));
     color: var(--white);
-    padding: 56px 20px;
+    padding: 60px 20px;
     text-align: center;
+    border-bottom: 4px solid var(--accent-gold);
 }
 
 .subpage-hero h1 {
     font-size: 2.4rem;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     color: var(--white);
+    line-height: 1.2;
 }
 
 .subpage-hero p {
@@ -763,15 +766,17 @@ textarea {
 .subpage-card {
     background: var(--white);
     padding: 30px;
-    border-radius: 8px;
+    border-radius: var(--border-radius-md);
     box-shadow: var(--box-shadow-subtle);
     margin-bottom: 30px;
+    border-top: 4px solid var(--primary-blue);
 }
 
 .subpage-card h2 {
     color: var(--primary-blue);
     margin-bottom: 18px;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
+    line-height: 1.3;
 }
 
 .subpage-card p {
@@ -781,12 +786,13 @@ textarea {
 
 .subpage-table-wrap {
     overflow-x: auto;
+    margin-top: 10px;
+    border-radius: var(--border-radius-sm);
 }
 
 .subpage-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
     background: var(--white);
 }
 
@@ -803,8 +809,16 @@ textarea {
     vertical-align: top;
 }
 
+.subpage-table th {
+    font-weight: 700;
+}
+
 .subpage-table tbody tr:nth-child(even) {
     background-color: #f8fafc;
+}
+
+.subpage-table tbody tr:hover {
+    background-color: #eef3ff;
 }
 
 .subpage-list {
@@ -817,29 +831,58 @@ textarea {
 }
 
 .subpage-highlight {
-    background-color: #fffdf5;
+    background-color: #fffaf0;
     border-left: 5px solid var(--accent-gold);
+    border-top: none;
 }
 
 .subpage-note {
     background-color: #f0f4fc;
     border-left: 4px solid var(--primary-blue);
     padding: 18px 20px;
-    border-radius: 6px;
+    border-radius: var(--border-radius-sm);
     margin-top: 20px;
 }
 
 .subpage-back-link {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 12px;
     color: var(--primary-blue);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
+    transition: var(--transition-smooth);
 }
 
 .subpage-back-link:hover {
     color: var(--primary-blue-hover);
     text-decoration: underline;
+}
+
+.subpage-button-link {
+    display: inline-block;
+    margin-top: 14px;
+    background-color: var(--accent-gold);
+    color: var(--primary-blue);
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+}
+
+.subpage-button-link:hover {
+    background-color: var(--accent-gold-hover);
+}
+
+.subpage-meta {
+    color: var(--neutral-grey);
+    font-size: 0.95rem;
+    margin-top: 6px;
+}
+
+.subpage-accent-text {
+    color: var(--accent-gold);
+    font-weight: 700;
 }
 
 /* Responsive for subpages */
@@ -852,8 +895,16 @@ textarea {
         font-size: 1.9rem;
     }
 
+    .subpage-hero p {
+        font-size: 1rem;
+    }
+
     .subpage-card {
         padding: 22px;
+    }
+
+    .subpage-card h2 {
+        font-size: 1.25rem;
     }
 
     .subpage-table th,
